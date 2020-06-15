@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const url = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/movie-database';
+const url = process.env.MONGODB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/movie-database';
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true});
 const Schema = mongoose.Schema;
 
