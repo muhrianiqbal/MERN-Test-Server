@@ -17,7 +17,7 @@ class MovieController {
     Movies.find()
       .sort('name')
       .then(movies => {
-        return res.status(201).json(movies);
+        return res.status(200).json(movies);
       })
       .catch(error => {
         next(error)
@@ -29,7 +29,7 @@ class MovieController {
 
     Movies.findById(id)
       .then(movie => {
-        return res.status(201).json(movie);
+        return res.status(200).json(movie);
       })
       .catch(error => {
         next(error)
@@ -42,7 +42,7 @@ class MovieController {
 
     Movies.findByIdAndUpdate(id, { name, poster, popularity, description, tags }, { new: true, runValidators: true })
       .then(movie => {
-        return res.status(201).json(movie);
+        return res.status(200).json(movie);
       })
       .catch(error => {
         next(error)

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const url = process.env.MONGODB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/movie-database';
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true});
+if (process.env.NODE_ENV == 'test') {
+  mongoose.connect('mongodb://localhost:27017/test-movie-database', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true })
+} else {
+  mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true});
+}
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
