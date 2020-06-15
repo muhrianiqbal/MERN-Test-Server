@@ -10,9 +10,12 @@ app.use(express.json());
 app.use(cors());
 app.use('/', router);
 app.use((err, req, res, next) => {
-  console.log(err)
-  if (err) {
-    return res.status(500).json(err);
+  if (err._message == 'Movies validation failed') {
+    return res.status(500).json({ error: 'Movies validation failed'});
+  } else if (err._message == 'Users validation failed') {
+    return res.status(500).json({ error: 'Users validation failed'});
   }
+
+  return res.status(500).json(err);
 })
 app.listen(PORT, () => { console.log(`Running on Port ${PORT}`)});
